@@ -12,16 +12,16 @@ public class SalarySlipGeneratorShould
         Employee employee = new Employee();
         employee.setEmployeeId( "12345" );
         employee.setEmployeeName( "John J Doe" );
-        employee.setAnnualGrossSalary( 8416.67f );
+        employee.setAnnualGrossSalary( 24000f );
         SalarySlip salarySlip = SalarySlipGenerator.generateFor( employee );
 
         Assert.assertEquals( "12345", salarySlip.getEmployeeId() );
         Assert.assertEquals( "John J Doe", salarySlip.getEmployeeName() );
-        Assert.assertEquals( 446.07f, salarySlip.getNationalInsuranceContributions(), 0 );
-        Assert.assertEquals( 875f, salarySlip.getTaxFreeAllowance(), 0 );
-        Assert.assertEquals( 7541.67f, salarySlip.getTaxableIncome(), 0 );
-        Assert.assertEquals( 2483.33f, salarySlip.getTaxPayable(), 0 );
+        double delta = 0.01;
+        Assert.assertEquals( 159.40f, salarySlip.getNationalInsuranceContributions(), delta );
+        Assert.assertEquals( 916.67f, salarySlip.getTaxFreeAllowance(), delta );
+        Assert.assertEquals( 1083.33f, salarySlip.getTaxableIncome(), delta );
+        Assert.assertEquals( 216.67f, salarySlip.getTaxPayable(), delta );
 
     }
-
 }
